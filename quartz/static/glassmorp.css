@@ -1,0 +1,37 @@
+/* =========================================================
+   GLASSMORPHISM THEME FOR OBSIDIAN
+   ========================================================= */
+
+/* Transparansi Utama Window & Sidebar */
+.app-container, .workspace, .workspace-split, .workspace-ribbon, .titlebar {
+  background: rgba(18, 20, 28, 0.75) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* Panel & Kartu Catatan (Glass Card) */
+.workspace-leaf, .markdown-source-view, .markdown-preview-view, .nav-files-container {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Header & File Explorer Item */
+.nav-file-title, .nav-folder-title {
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-file-title:hover, .nav-folder-title:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Callout Box / Kartu Informasi Glassmorphism */
+.callout {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}

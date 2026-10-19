@@ -1,0 +1,16 @@
+/* Mengatur lebar konten di Mode Reading & Live Preview */
+body {
+    --file-line-width: 90%; /* Default Obsidian biasanya 700px-800px */
+}
+
+/* Memastikan tabel memanfaatkan ruang yang tersedia */
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-rendered {
+    max-width: 100%; 
+    margin: 0 auto;
+}
+
+/* Khusus Tabel agar otomatis memenuhi lebar kontainer baru */
+.markdown-rendered table {
+    width: 100%;
+}

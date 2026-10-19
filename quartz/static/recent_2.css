@@ -1,0 +1,290 @@
+/* Container Utama */
+.recent-scroll-wrapper {
+    margin-bottom: 20px;
+}
+
+.recent-scroll-header {
+    margin: 0 0 12px 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-normal);
+}
+
+/* Container Horizontal Scroll */
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 12px;
+    padding: 5px 5px 15px 5px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Desain Kartu / Grid Item */
+.scroll-card {
+    flex: 0 0 160px;
+    min-width: 160px;
+    scroll-snap-align: start;
+    background: var(--background-secondary-alt);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 15px; /* Kelengkungan sudut */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.scroll-card:hover {
+    border-color: var(--interactive-accent);
+    transform: translateY(-2px);
+    background: var(--background-secondary);
+}
+
+/* Judul File di Dalam Kartu */
+.scroll-card-title {
+    font-weight: 600;
+    font-size: 0.9em;
+    line-height: 1.3;
+    color: var(--text-normal) !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Keterangan Waktu */
+.scroll-card-time {
+    font-size: 0.7em;
+    opacity: 0.5;
+    margin-top: 10px;
+}
+
+/* Sembunyikan Scrollbar tapi tetap bisa scroll */
+.scroll-container::-webkit-scrollbar {
+    height: 4px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border);
+    border-radius: 10px;
+}
+
+/* Update pada desain Kartu agar menjadi Glassmorphism */
+.scroll-card {
+    flex: 0 0 160px;
+    min-width: 160px;
+    scroll-snap-align: start;
+    
+    /* Efek Utama Glassmorphism */
+    background: rgba(255, 255, 255, 0.05); /* Warna putih sangat transparan */
+    backdrop-filter: blur(12px) saturate(180%); /* Efek Blur & Kejenuhan warna belakang */
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    
+    /* Border Tipis seperti Kilauan Kaca */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 18px; /* Sedikit lebih lengkung khas iOS terbaru */
+    
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 105px;
+    
+    /* Bayangan Halus */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efek saat kartu disentuh/hover */
+.scroll-card:hover {
+    background: rgba(255, 255, 255, 0.1); /* Sedikit lebih terang */
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02) translateY(-4px); /* Efek melayang */
+}
+
+/* Penyesuaian teks agar tetap kontras di atas kaca */
+.scroll-card-title {
+    font-weight: 600;
+    font-size: 0.95em;
+    line-height: 1.4;
+    color: var(--text-normal) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Bayangan teks tipis agar mudah dibaca */
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+.scroll-card-time {
+    font-size: 0.75em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.6;
+}
+
+/* Container Wrapper untuk posisi Panah */
+.recent-scroll-navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Gaya Tombol Panah iOS Glass */
+.nav-arrow {
+/* Container Wrapper */
+.recent-scroll-navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Gaya Tombol Panah (Sembunyi secara default) */
+.nav-arrow {
+    position: absolute;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    /* Efek Sembunyi */
+    opacity: 0; 
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Muncul saat AREA NAVIGASI di-hover */
+.recent-scroll-navigation:hover .nav-arrow {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* Efek saat TOMBOL diklik */
+.nav-arrow:active {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.arrow-left { left: 5px; }
+.arrow-right { right: 5px; }
+
+/* Scroll container tetap smooth & tanpa scrollbar */
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 15px 5px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scroll-container::-webkit-scrollbar { display: none; }
+}
+
+.nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.arrow-left { left: -10px; }
+.arrow-right { right: -10px; }
+
+/* Sembunyikan scrollbar agar bersih karena sudah pakai panah */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+.scroll-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth; /* Penting untuk animasi geser */
+}
+
+/* Container navigasi */
+.recent-scroll-navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Gaya Tombol Panah (Kaca Kristal) */
+.nav-arrow {
+    position: absolute;
+    z-index: 20; /* Pastikan di atas kartu */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    
+    /* State Tersembunyi Total */
+    opacity: 0;
+    pointer-events: none; 
+    transform: scale(0.7);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal/pop-up */
+    
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Muncul hanya saat kursor diarahkan ke area navigasi */
+.recent-scroll-navigation:hover .nav-arrow {
+    opacity: 1;
+    pointer-events: auto; /* Bisa diklik kembali */
+    transform: scale(1);
+}
+
+/* Posisi Panah */
+.arrow-left { 
+    left: -5px; 
+}
+.arrow-right { 
+    right: -5px; 
+}
+
+/* Efek Klik (Feedback) */
+.nav-arrow:active {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Container kartu tetap rapi */
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 15px 5px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}

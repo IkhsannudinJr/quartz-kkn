@@ -1,0 +1,48 @@
+/* =========================================================
+   STYLE GLASSMORPHISM PRESISI 1:1 UNTUK EKSPOR PDF
+   ========================================================= */
+@media print {
+    /* 1. Paksa Pakai Kertas A4 Landscape & Cetak Warna */
+    @page {
+        size: A4 landscape;
+        margin: 5mm;
+    }
+
+    body, .glass-grid-container {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: transparent !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* 2. Pertahankan Grid & Skala Ukuran Agar Pas di Halaman */
+    .flex-grid-table {
+        width: 100% !important;
+        transform: scale(0.92); /* Skala halus agar seluruh 11 kolom muat tanpa terpotong */
+        transform-origin: top left;
+    }
+
+    /* 3. Sembunyikan Elemen Tombol Interaktif Tambah/Hapus */
+    .add-capsule-btn, 
+    .capsule-remove, 
+    .capsule-popup-menu,
+    .popup-search-input {
+        display: none !important;
+    }
+
+    /* 4. Mencegah Baris Tabel Terpotong di Antara Halaman */
+    .grid-row {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* 5. Rapikan Teks Input Tanggal & Dropdown Tanpa Border Aneh */
+    select, input[type="date"], input[type="text"] {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+}

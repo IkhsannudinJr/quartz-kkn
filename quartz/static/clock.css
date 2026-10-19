@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Obsidian Fliqlo Clock Snippet - iOS Premium Glass Edition
+   Gaya minimalis ultra-clean tanpa box/grid dengan efek kaca 3D kristal premium,
+   serta pendaran aura latar belakang (blobs) yang menyatu sangat halus.
+   ========================================================================== */
+
+/* Container Utama Luar (Dibuat benar-benar tembus pandang tanpa pembatas tajam) */
+.fliqlo-clock-container {
+    position: relative;
+    z-index: 1;
+    isolation: isolate; /* Mengunci tumpukan agar gelembung z-index -1 tidak hilang di belakang Obsidian */
+    overflow: visible !important; /* Mencegah pemotongan efek blur di tepi kontainer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 40px;
+    background: transparent;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Efek Aura Gelembung Latar Belakang (Luminous Ambient Glow - Super Halus)
+ 
+/* --------------------------------------------------------------------------
+   Struktur Tata Letak Jam
+   -------------------------------------------------------------------------- */
+.fliqlo-clock-time-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.fliqlo-clock-group {
+    display: flex;
+    gap: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Efek Kaca Kristal Murni (Premium iOS Glass Text) Pada Setiap Karakter Angka
+   -------------------------------------------------------------------------- */
+.fliqlo-digit {
+    font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 10rem;
+    font-weight: 800; /* Ketebalan proporsional, sangat bersih dan modern khas Apple */
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-align: center;
+    
+    /* EFEK KACA PREMIUM: Permukaan Reflektif Satin Semi-Transparan */
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.85) 0%,   /* Kilauan cahaya sudut atas */
+        rgba(255, 255, 255, 0.20) 45%,  /* Transparansi bagian tengah kaca */
+        rgba(255, 255, 255, 0.10) 55%,  
+        rgba(255, 255, 255, 0.55) 100%  /* Refraksi cahaya di sudut bawah */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* GARIS TEPI KACA: Dibuat ultra-tipis (0.5px) untuk memancarkan kilau tajam dan presisi */
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.65); 
+    
+    /* DIMENSI 3D ELEGAN: Menggunakan bayangan lembut berlapis (floating depth) untuk ilusi kaca melayang */
+    filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.75))     /* Bayangan jatuh yang sangat luas dan lembut */
+            drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.15));  /* Kilauan tepi luar super tipis */
+    
+    transition: filter 0.3s ease;
+}
+
+/* Detik Bergaya Kaca Kristal 3D */
+.fliqlo-digit-seconds {
+    font-size: 6.5rem;
+    font-weight: 800;
+    
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.65) 0%, 
+        rgba(255, 255, 255, 0.15) 45%, 
+        rgba(255, 255, 255, 0.05) 55%, 
+        rgba(255, 255, 255, 0.40) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.4px rgba(255, 255, 255, 0.5);
+
+    filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.65))
+            drop-shadow(0px 1px 3px rgba(255, 255, 255, 0.1));
+            
+    align-self: flex-end;
+    margin-bottom: 5px;
+}
+
+/* Titik Dua (:) Bergaya Kaca 3D */
+.fliqlo-colon, .fliqlo-colon-seconds {
+    font-family: 'SF Pro Display', 'Inter', sans-serif;
+    font-size: 7rem;
+    font-weight: 800;
+    
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.70) 0%, 
+        rgba(255, 255, 255, 0.20) 45%, 
+        rgba(255, 255, 255, 0.50) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.55);
+
+    filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.7));
+    line-height: 0.9;
+    margin: 0 5px;
+    align-self: center;
+}
+.fliqlo-colon-seconds {
+    font-size: 4.5rem;
+    -webkit-text-stroke: 0.4px rgba(255, 255, 255, 0.45);
+}
+
+/* Hari & Tanggal Murni Melayang */
+.fliqlo-clock-date {
+    font-family: 'SF Pro Display', 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 30px;
+    background: transparent;
+    border: none !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* ==================== PENYESUAIAN LIGHT MODE (TEMA TERANG) ==================== */
+.theme-light .fliqlo-clock-container::before,
+.theme-light .fliqlo-clock-container::after {
+    mix-blend-mode: multiply;
+    opacity: 0.25;
+}
+.theme-light .fliqlo-digit {
+    background: linear-gradient(145deg, 
+        rgba(0, 0, 0, 0.55) 0%, 
+        rgba(0, 0, 0, 0.15) 45%, 
+        rgba(0, 0, 0, 0.40) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.45);
+    filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.15))
+            drop-shadow(0px 1px 2px rgba(255, 255, 255, 0.7));
+}
+.theme-light .fliqlo-digit-seconds {
+    background: linear-gradient(145deg, 
+        rgba(0, 0, 0, 0.35) 0%, 
+        rgba(0, 0, 0, 0.1) 45%, 
+        rgba(0, 0, 0, 0.25) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.35);
+}
+.theme-light .fliqlo-colon, .theme-light .fliqlo-colon-seconds {
+    background: linear-gradient(145deg, 
+        rgba(0, 0, 0, 0.4) 0%, 
+        rgba(0, 0, 0, 0.1) 45%, 
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.4);
+    filter: none;
+}
+.theme-light .fliqlo-clock-date {
+    color: #1c1c1e;
+    text-shadow: none;
+}
+
+/* ==================== RESPONSIVE LAYAR HP ==================== */
+@media (max-width: 600px) {
+    .fliqlo-clock-container {
+        padding: 15px;
+    }
+    .fliqlo-clock-container::before {
+        width: 150px;
+        height: 150px;
+    }
+    .fliqlo-clock-container::after {
+        width: 180px;
+        height: 180px;
+    }
+    .fliqlo-clock-time-wrapper {
+        gap: 6px;
+    }
+    .fliqlo-clock-group {
+        gap: 2px;
+    }
+    .fliqlo-digit {
+        font-size: 5rem;
+        -webkit-text-stroke-width: 0.4px;
+    }
+    .fliqlo-digit-seconds {
+        font-size: 3.2rem;
+        -webkit-text-stroke-width: 0.3px;
+        margin-bottom: 2px;
+    }
+    .fliqlo-colon {
+        font-size: 3.5rem;
+        -webkit-text-stroke-width: 0.4px;
+        margin: 0 2px;
+    }
+    .fliqlo-colon-seconds {
+        font-size: 2.2rem;
+        -webkit-text-stroke-width: 0.3px;
+    }
+    .fliqlo-clock-date {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .fliqlo-digit {
+        font-size: 3.8rem;
+    }
+    .fliqlo-digit-seconds {
+        font-size: 2.5rem;
+    }
+    .fliqlo-colon {
+        font-size: 2.8rem;
+    }
+    .fliqlo-colon-seconds {
+        font-size: 1.8rem;
+    }
+}

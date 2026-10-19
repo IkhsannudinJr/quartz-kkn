@@ -1,0 +1,70 @@
+/* Container Utama */
+.ios-recent-container {
+    padding: 20px !important;
+    border-radius: 30px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+    margin: 20px 0 !important;
+}
+
+/* Memaksa Tabel Dataview Menghilang Gayanya */
+.ios-recent-container table.dataview.table-view-table {
+    background: transparent !important;
+    border: none !important;
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 12px !important;
+}
+
+/* Hilangkan Header & Border Default */
+.ios-recent-container thead, 
+.ios-recent-container tr, 
+.ios-recent-container td {
+    border: none !important;
+}
+
+.ios-recent-container thead {
+    display: none !important;
+}
+
+/* Baris Tabel - Menjadi Kartu Kaca */
+.ios-recent-container tbody tr {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 18px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ios-recent-container tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.02);
+}
+
+/* Styling Kolom */
+.ios-recent-container td {
+    padding: 16px !important;
+    vertical-align: middle !important;
+}
+
+/* Kolom Nama File */
+.ios-recent-container td:first-child {
+    border-top-left-radius: 18px !important;
+    border-bottom-left-radius: 18px !important;
+    font-weight: 600 !important;
+}
+
+.ios-recent-container td:first-child a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Kolom Waktu */
+.ios-recent-container td:last-child {
+    border-top-right-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
+    text-align: right !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 0.85em !important;
+}

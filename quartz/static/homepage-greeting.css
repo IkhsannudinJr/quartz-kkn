@@ -1,0 +1,59 @@
+/* Container Utama - Bersih Tanpa Box */
+.homepage-greeting {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px; /* Jarak antar huruf lebih rapat untuk teks biasa */
+    padding: 20px;
+    margin: 10px 0;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Styling Huruf Individual */
+.letter-clean {
+    display: inline-block;
+    font-family: 'SF Pro Display', 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    
+    /* Warna Light Mode - Gradasi Halus */
+    background: linear-gradient(180deg, #2c3e50 0%, #000000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Animasi Muncul */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: text-appear 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Penyesuaian Dark Mode */
+.theme-dark .letter-clean {
+    background: linear-gradient(180deg, #ffffff 30%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+}
+
+/* Spasi Kata */
+.letter-space {
+    width: 12px;
+}
+
+/* Tanaman 🌿 */
+.plant-clean {
+    font-size: 1.8em;
+    margin-left: 10px;
+    opacity: 0;
+    animation: text-appear 0.8s ease forwards;
+}
+
+/* Keyframes Animasi */
+@keyframes text-appear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

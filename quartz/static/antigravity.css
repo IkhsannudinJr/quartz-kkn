@@ -1,0 +1,29 @@
+/* ANTIGRAVITY ULTRA - FORCE RESET */
+body, 
+.app-container,
+.workspace,
+.workspace-split, 
+.workspace-tabs, 
+.workspace-pane, 
+.workspace-leaf,
+.workspace-leaf-content,
+.view-header {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Mengubah lembar kerja utama seperti melayang di atas latar belakang kosong */
+.markdown-source-view, 
+.markdown-preview-view {
+    background-color: var(--background-primary) !important;
+    border: 1px solid var(--background-modifier-border) !important;
+    border-radius: 16px !important;
+    margin: 15px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Sembunyikan garis pemisah antar panel secara total */
+.workspace-leaf-resize-handle {
+    opacity: 0 !important;
+}
