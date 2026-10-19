@@ -85,14 +85,16 @@
     height: 22px;
     outline: none;
     cursor: pointer;
-}
-.glass-date-input:hover, .glass-date-input:focus {
-    border-color: rgba(255, 255, 255, 0.18) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-}
-.glass-date-input::-webkit-calendar-picker-indicator {
-    filter: invert(0.6);
-    transform: scale(0.75);
+
+    &:hover, &:focus {
+        border-color: rgba(255, 255, 255, 0.18) !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+        filter: invert(0.6);
+        transform: scale(0.75);
+    }
 }
 
 /* INPUT TEXT INLINE UNTUK KOLOM TINJAUAN */
@@ -106,10 +108,11 @@
     width: 95%;
     height: 22px;
     outline: none;
-}
-.glass-text-input-inline:focus {
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    background: rgba(255, 255, 255, 0.04) !important;
+
+    &:focus {
+        border-color: rgba(255, 255, 255, 0.15) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+    }
 }
 
 /* STATUS INLINE BAR OPTIONS */
@@ -140,12 +143,14 @@
     cursor: pointer;
     text-align: center;
     text-align-last: center;
+
+    option {
+        text-align: center;
+        background: #1c1d22;
+        color: var(--text-normal);
+    }
 }
-.glass-select-inline option {
-    text-align: center;
-    background: #1c1d22;
-    color: var(--text-normal);
-}
+
 .inline-status-proses { color: #e67e22 !important; background: rgba(243, 156, 18, 0.05) !important; }
 .inline-status-selesai { color: #27ae60 !important; background: rgba(46, 204, 113, 0.05) !important; }
 .inline-status-belum { color: #7f8c8d !important; background: rgba(149, 165, 166, 0.05) !important; }
@@ -176,8 +181,11 @@
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.12);
 }
-.capsule-remove { cursor: pointer; opacity: 0.6; }
-.capsule-remove:hover { color: #ff7675; opacity: 1; }
+.capsule-remove { 
+    cursor: pointer; 
+    opacity: 0.6; 
+    &:hover { color: #ff7675; opacity: 1; }
+}
 
 .add-capsule-btn {
     background: rgba(255, 255, 255, 0.04) !important;
@@ -220,15 +228,23 @@
     margin-bottom: 5px !important;
 }
 .popup-list-container { overflow-y: auto; max-height: 125px; }
-.popup-checkbox-label { display: flex; align-items: center; gap: 5px; padding: 3px 4px; font-size: 11px; color: #d1d1d6; cursor: pointer; }
-.popup-checkbox-label:hover { background: rgba(255, 255, 255, 0.04); }
-.popup-checkbox-label input[type="checkbox"] { transform: scale(0.85); margin: 0; }
+.popup-checkbox-label { 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    padding: 3px 4px; 
+    font-size: 11px; 
+    color: #d1d1d6; 
+    cursor: pointer; 
+    &:hover { background: rgba(255, 255, 255, 0.04); }
+    input[type="checkbox"] { transform: scale(0.85); margin: 0; }
+}
 
 /* KECAMATAN PALETTE COLOR - NEON VIBRANT FIX */
 .kec-jatipurno, .kec-baturetno, .kec-jatiroto { background: #ff3b75 !important; }
 .kec-wonogiri, .kec-batuwarno, .kec-jatisrono { background: #ff9f1a !important; }
-.kec-selogiri, .kec-bulukerto, .kec-karangtengah { background: #ffcc00 !important; color: #ffffff !important; } /* Teks Gelap Agar Kontras */
-.kec-kismantoro, .kec-eromoko, .kec-manyaran, .kec-purwantoro { background: #32d74b !important; color: #f9f8f8 !important; } /* Teks Gelap Agar Kontras */
+.kec-selogiri, .kec-bulukerto, .kec-karangtengah { background: #ffcc00 !important; color: #ffffff !important; }
+.kec-kismantoro, .kec-eromoko, .kec-manyaran, .kec-purwantoro { background: #32d74b !important; color: #f9f8f8 !important; }
 .kec-slogohimo, .kec-girimarto, .kec-ngadirojo, .kec-tirtomoyo { background: #ff453a !important; }
 .kec-pracimantoro, .kec-giritontro, .kec-nguntoronadi, .kec-wuryantoro { background: #0a84ff !important; }
 .kec-giriwoyo, .kec-paranggupito, .kec-puhpelem, .kec-sidoharjo { background: #bf5af2 !important; }
@@ -306,17 +322,19 @@
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--text-normal);
+
+    &.proses {
+        background: rgba(245, 158, 11, 0.12);
+        border-color: rgba(245, 158, 11, 0.35);
+        color: #fbbf24;
+    }
+    &.selesai {
+        background: rgba(16, 185, 129, 0.12);
+        border-color: rgba(16, 185, 129, 0.35);
+        color: #34d399;
+    }
 }
-.kkn-stat-badge.proses {
-    background: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.35);
-    color: #fbbf24;
-}
-.kkn-stat-badge.selesai {
-    background: rgba(16, 185, 129, 0.12);
-    border-color: rgba(16, 185, 129, 0.35);
-    color: #34d399;
-}
+
 .kkn-map-mode-btn {
     background: rgba(59, 130, 246, 0.16) !important;
     border: 1px solid rgba(59, 130, 246, 0.4) !important;
@@ -327,11 +345,12 @@
     padding: 3px 10px;
     cursor: pointer;
     transition: all 0.2s ease;
-}
-.kkn-map-mode-btn:hover {
-    background: rgba(59, 130, 246, 0.28) !important;
-    border-color: #60a5fa !important;
-    color: #ffffff !important;
+
+    &:hover {
+        background: rgba(59, 130, 246, 0.28) !important;
+        border-color: #60a5fa !important;
+        color: #ffffff !important;
+    }
 }
 
 .kkn-map-btn {
@@ -344,31 +363,36 @@
     padding: 3px 9px;
     cursor: pointer;
     transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
+    }
 }
-.kkn-map-btn:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.25) !important;
-}
+
 .kkn-map-waduk-btn {
     background: rgba(14, 165, 233, 0.15) !important;
     border: 1px solid rgba(56, 189, 248, 0.38) !important;
     color: #38bdf8 !important;
+
+    &:hover {
+        background: rgba(14, 165, 233, 0.3) !important;
+        border-color: #38bdf8 !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
 }
-.kkn-map-waduk-btn:hover {
-    background: rgba(14, 165, 233, 0.3) !important;
-    border-color: #38bdf8 !important;
-    color: #ffffff !important;
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
-}
+
 .kkn-map-reset-btn {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.14) !important;
     color: var(--text-muted) !important;
-}
-.kkn-map-reset-btn:hover {
-    background: rgba(255, 255, 255, 0.12) !important;
-    color: #ffffff !important;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: #ffffff !important;
+    }
 }
 
 .kkn-map-toggle-btn {
@@ -381,10 +405,11 @@
     padding: 3px 9px;
     cursor: pointer;
     transition: all 0.2s ease;
-}
-.kkn-map-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.12) !important;
-    color: #ffffff !important;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: #ffffff !important;
+    }
 }
 
 /* STAGE CONTAINER PETA (LEAFLET INTERAKTIF) */
@@ -398,55 +423,60 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
     box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4);
+
+    &.collapsed {
+        display: none !important;
+    }
+
+    .leaflet-container {
+        background: #0b0f19 !important;
+        font-family: inherit !important;
+    }
+
+    .leaflet-control-zoom {
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6) !important;
+        margin-left: 14px !important;
+        margin-top: 14px !important;
+
+        a {
+            background: rgba(15, 23, 42, 0.88) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            color: #f1f5f9 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            font-size: 15px !important;
+            line-height: 28px !important;
+            width: 30px !important;
+            height: 30px !important;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: rgba(59, 130, 246, 0.5) !important;
+                color: #ffffff !important;
+            }
+        }
+    }
+
+    .leaflet-control-attribution {
+        background: rgba(15, 23, 42, 0.82) !important;
+        backdrop-filter: blur(8px) !important;
+        color: var(--text-faint) !important;
+        font-size: 9px !important;
+        border-radius: 6px 0 0 0;
+        padding: 2px 8px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+
+        a {
+            color: #38bdf8 !important;
+            text-decoration: none;
+        }
+    }
 }
 
-.kkn-map-stage.collapsed {
-    display: none !important;
-}
-
-/* Custom styling kontrol Leaflet & Zoom */
-.kkn-map-stage .leaflet-container {
-    background: #0b0f19 !important;
-    font-family: inherit !important;
-}
-.kkn-map-stage .leaflet-control-zoom {
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6) !important;
-    margin-left: 14px !important;
-    margin-top: 14px !important;
-}
-.kkn-map-stage .leaflet-control-zoom a {
-    background: rgba(15, 23, 42, 0.88) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    color: #f1f5f9 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    font-size: 15px !important;
-    line-height: 28px !important;
-    width: 30px !important;
-    height: 30px !important;
-    transition: all 0.2s ease;
-}
-.kkn-map-stage .leaflet-control-zoom a:hover {
-    background: rgba(59, 130, 246, 0.5) !important;
-    color: #ffffff !important;
-}
-.kkn-map-stage .leaflet-control-attribution {
-    background: rgba(15, 23, 42, 0.82) !important;
-    backdrop-filter: blur(8px) !important;
-    color: var(--text-faint) !important;
-    font-size: 9px !important;
-    border-radius: 6px 0 0 0;
-    padding: 2px 8px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-}
-.kkn-map-stage .leaflet-control-attribution a {
-    color: #38bdf8 !important;
-    text-decoration: none;
-}
 .kkn-leaflet-marker-clean,
 .kkn-leaflet-bgdot-clean,
 .kkn-leaflet-waduk-clean {
@@ -475,12 +505,13 @@
     height: 0;
     cursor: pointer;
     z-index: 100;
-}
-.kkn-pin-wrapper:hover {
-    z-index: 999999 !important;
+
+    &:hover {
+        z-index: 999999 !important;
+    }
 }
 
-/* 1. Titik Target Presisi di Permukaan Tanah (Ground Target & Sonar Ripple) */
+/* 1. Titik Target Presisi di Permukaan Tanah */
 .kkn-pin-ground {
     position: absolute;
     top: 0;
@@ -537,54 +568,65 @@
     white-space: nowrap;
     transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: auto;
-}
 
-/* Jarum penunjuk segitiga ke titik koordinat */
-.kkn-pin-pill::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 5px solid rgba(15, 23, 42, 0.92);
-    transition: border-top-color 0.2s ease;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 5px solid rgba(15, 23, 42, 0.92);
+        transition: border-top-color 0.2s ease;
+    }
 }
 
 /* Status: PROSES (Neon Amber) */
-.kkn-pin-wrapper.proses .kkn-pin-ground-core,
-.kkn-pin-wrapper.proses .kkn-pin-ground-pulse { color: #f59e0b; }
-.kkn-pin-wrapper.proses .kkn-pin-pill {
-    border-color: rgba(245, 158, 11, 0.55);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 12px rgba(245, 158, 11, 0.35);
-}
-.kkn-pin-wrapper.proses .kkn-pin-pill::after {
-    border-top-color: rgba(245, 158, 11, 0.85);
+.kkn-pin-wrapper.proses {
+    .kkn-pin-ground-core, .kkn-pin-ground-pulse { color: #f59e0b; }
+    .kkn-pin-pill {
+        border-color: rgba(245, 158, 11, 0.55);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 12px rgba(245, 158, 11, 0.35);
+        &::after { border-top-color: rgba(245, 158, 11, 0.85); }
+    }
+    &:hover .kkn-pin-pill {
+        border-color: #f59e0b;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(245, 158, 11, 0.55);
+    }
+    .kkn-pill-dot { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; }
 }
 
 /* Status: SELESAI (Neon Emerald) */
-.kkn-pin-wrapper.selesai .kkn-pin-ground-core,
-.kkn-pin-wrapper.selesai .kkn-pin-ground-pulse { color: #10b981; }
-.kkn-pin-wrapper.selesai .kkn-pin-pill {
-    border-color: rgba(16, 185, 129, 0.55);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 12px rgba(16, 185, 129, 0.35);
-}
-.kkn-pin-wrapper.selesai .kkn-pin-pill::after {
-    border-top-color: rgba(16, 185, 129, 0.85);
+.kkn-pin-wrapper.selesai {
+    .kkn-pin-ground-core, .kkn-pin-ground-pulse { color: #10b981; }
+    .kkn-pin-pill {
+        border-color: rgba(16, 185, 129, 0.55);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 12px rgba(16, 185, 129, 0.35);
+        &::after { border-top-color: rgba(16, 185, 129, 0.85); }
+    }
+    &:hover .kkn-pin-pill {
+        border-color: #10b981;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(16, 185, 129, 0.55);
+    }
+    .kkn-pill-dot { background: #10b981; box-shadow: 0 0 6px #10b981; }
 }
 
 /* Status: USULAN (Cool Blue) */
-.kkn-pin-wrapper.usulan .kkn-pin-ground-core,
-.kkn-pin-wrapper.usulan .kkn-pin-ground-pulse { color: #38bdf8; }
-.kkn-pin-wrapper.usulan .kkn-pin-pill {
-    border-color: rgba(56, 189, 248, 0.55);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 12px rgba(56, 189, 248, 0.35);
-}
-.kkn-pin-wrapper.usulan .kkn-pin-pill::after {
-    border-top-color: rgba(56, 189, 248, 0.85);
+.kkn-pin-wrapper.usulan {
+    .kkn-pin-ground-core, .kkn-pin-ground-pulse { color: #38bdf8; }
+    .kkn-pin-pill {
+        border-color: rgba(56, 189, 248, 0.55);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 12px rgba(56, 189, 248, 0.35);
+        &::after { border-top-color: rgba(56, 189, 248, 0.85); }
+    }
+    &:hover .kkn-pin-pill {
+        border-color: #38bdf8;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(56, 189, 248, 0.55);
+    }
+    .kkn-pill-dot { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; }
 }
 
 /* Lampu indikator status di dalam pill */
@@ -594,9 +636,6 @@
     border-radius: 50%;
     flex-shrink: 0;
 }
-.kkn-pin-wrapper.proses .kkn-pill-dot { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; }
-.kkn-pin-wrapper.selesai .kkn-pill-dot { background: #10b981; box-shadow: 0 0 6px #10b981; }
-.kkn-pin-wrapper.usulan .kkn-pill-dot { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; }
 
 /* Tipografi label nama PTN */
 .kkn-pill-title {
@@ -622,18 +661,6 @@
 /* Animasi elevasi saat hover */
 .kkn-pin-wrapper:hover .kkn-pin-pill {
     transform: translateX(-50%) translateY(-4px) scale(1.08);
-}
-.kkn-pin-wrapper.proses:hover .kkn-pin-pill {
-    border-color: #f59e0b;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(245, 158, 11, 0.55);
-}
-.kkn-pin-wrapper.selesai:hover .kkn-pin-pill {
-    border-color: #10b981;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(16, 185, 129, 0.55);
-}
-.kkn-pin-wrapper.usulan:hover .kkn-pin-pill {
-    border-color: #38bdf8;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(56, 189, 248, 0.55);
 }
 
 /* 3. POPOVER IDENTITAS KKN (FLOATING GLASS CARD) */
@@ -661,6 +688,21 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    &.popover-align-top {
+        bottom: auto;
+        top: calc(100% + 14px);
+        transform: translateX(-50%) translateY(-8px);
+    }
+    &.popover-align-right {
+        left: auto;
+        right: 0;
+        transform: translateY(8px);
+    }
+    &.popover-align-left {
+        left: 0;
+        transform: translateY(8px);
+    }
 }
 
 .kkn-pin-wrapper:hover .kkn-pin-popover {
@@ -668,42 +710,20 @@
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
-}
 
-/* Alignment adaptif layar */
-.kkn-pin-popover.popover-align-top {
-    bottom: auto;
-    top: calc(100% + 14px);
-    transform: translateX(-50%) translateY(-8px);
-}
-.kkn-pin-wrapper:hover .kkn-pin-popover.popover-align-top {
-    transform: translateX(-50%) translateY(0);
-}
-
-.kkn-pin-popover.popover-align-right {
-    left: auto;
-    right: 0;
-    transform: translateY(8px);
-}
-.kkn-pin-wrapper:hover .kkn-pin-popover.popover-align-right {
-    transform: translateY(0);
-}
-
-.kkn-pin-popover.popover-align-left {
-    left: 0;
-    transform: translateY(8px);
-}
-.kkn-pin-wrapper:hover .kkn-pin-popover.popover-align-left {
-    transform: translateY(0);
+    &.popover-align-top, &.popover-align-right, &.popover-align-left {
+        transform: translateY(0);
+    }
 }
 
 .kkn-popover-item {
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     padding-bottom: 8px;
-}
-.kkn-popover-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 }
 
 .kkn-popover-item-head {
@@ -725,10 +745,11 @@
     padding: 2px 7px;
     border-radius: 4px;
     text-transform: uppercase;
+
+    &.proses { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+    &.selesai { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+    &.usulan { background: rgba(148, 163, 184, 0.18); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.4); }
 }
-.kkn-popover-badge.proses { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
-.kkn-popover-badge.selesai { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
-.kkn-popover-badge.usulan { background: rgba(148, 163, 184, 0.18); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.4); }
 
 .kkn-popover-meta {
     display: flex;
@@ -753,11 +774,11 @@
 .kkn-meta-val {
     color: var(--text-normal);
     font-weight: 500;
-}
 
-.kkn-meta-val.highlight {
-    color: #60a5fa;
-    font-weight: 600;
+    &.highlight {
+        color: #60a5fa;
+        font-weight: 600;
+    }
 }
 
 .kkn-popover-hint {
@@ -775,5 +796,3 @@
     outline: 1.5px solid #60a5fa !important;
     transition: all 0.3s ease;
 }
-
-
