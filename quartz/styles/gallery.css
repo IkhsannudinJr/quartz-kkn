@@ -1,0 +1,362 @@
+/* ==========================================================================
+   1. LAYOUT WRAPPER & GRID CONTROLLER (PURE MINIMALIST - NO TITLE)
+   ========================================================================== */
+
+/* Kontainer Paling Luar */
+.archive-main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Grid Utama: Langsung fokus ke 3 kartu sejajar horizontal */
+.duo-archive-container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Mengunci kartu agar anti-turun ke bawah */
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 0 20px 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Memastikan ketiga kartu membagi ruang secara adil dan presisi */
+.duo-archive-container .big-archive-card {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+}
+
+/* ==========================================================================
+   2. MAIN PREMIUM CARD STYLING (WIA, IGA, KRENOVA)
+   ========================================================================== */
+
+.big-archive-card {
+    position: relative;
+    width: 100%;
+    height: 260px; /* Improvisasi: ditambah 10px agar teks bawah memiliki ruang napas lebih */
+    border-radius: 20px; /* Lebih rounded agar senada dengan UI modern */
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--background-secondary);
+    border: 1px solid var(--divider-color);
+    box-sizing: border-box;
+    
+    /* Layout Konten internal */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    
+    /* Smooth hardware-accelerated transition */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                border-color 0.3s ease;
+    will-change: transform, box-shadow;
+}
+
+/* Efek Hover Kartu Utama - Angkat & Beri Glow lembut */
+.big-archive-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+    border-color: var(--interactive-accent);
+}
+
+/* Border Aksen Samping (Gaya Identitas Khas) */
+.wia-style { border-left: 5px solid #f1c40f; }
+.iga-style { border-left: 5px solid #e74c3c; }
+.krenova-subo-style { border-left: 5px solid #3498db; } /* Improvisasi: Tambah warna biru khas untuk Subosukawonosraten */
+
+/* ==========================================================================
+   3. CARD MEDIA & OVERLAY INTERACTION
+   ========================================================================== */
+
+.card-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.card-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.big-archive-card:hover .card-bg {
+    transform: scale(1.08); /* Sinematik zoom saat di-hover */
+}
+
+/* Gradasi Gelap: Menjamin teks warna putih mutlak mudah dibaca */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+    z-index: 2;
+}
+
+/* ==========================================================================
+   4. CARD TEXT CONTENT (MINIMALIST EDITION)
+   ========================================================================== */
+
+.card-content {
+    position: relative;
+    z-index: 3;
+    padding: 16px; /* Diperkecil dari 24px agar ruang kartu lebih lega */
+    text-align: left;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tag Kecil di Atas Judul */
+.card-tag {
+    background: rgba(255, 255, 255, 0.2); /* Menggunakan glassmorphic tag halus */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 9px; /* Super ringkas */
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Judul Utama (WIA, IGA, KRENOVA) */
+.card-title {
+    margin: 0 !important;
+    font-size: 1.1rem; /* Diperkecil dari 1.35rem agar tidak makan tempat */
+    font-weight: 600;  /* Mengurangi ketebalan ekstrem menjadi semi-bold */
+    line-height: 1.2;
+    letter-spacing: -0.3px; /* Gaya tipografi khas Apple */
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* Deskripsi Pendek */
+.card-subtitle {
+    margin: 4px 0 12px 0 !important;
+    font-size: 0.75rem; /* Sangat sleek dan kecil */
+    opacity: 0.75;      /* Lebih tipis dan menyatu dengan background */
+    color: #e0e0e0;
+    line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Tombol Aksi */
+.explore-btn {
+    font-size: 0.72rem; /* Ukuran teks tombol diminimalkan */
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1); /* Tipis transparan */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 4px 12px; /* Lebih tipis */
+    border-radius: 20px;
+    width: fit-content;
+    transition: all 0.25s ease;
+}
+
+/* Hover State Tombol */
+.big-archive-card:hover .explore-btn {
+    background: #ffffff; /* Berubah menjadi putih bersih minimalis saat di-hover */
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   5. YEAR SUBFOLDER VIEW (GLASSMORPHISM LAYER)
+   ========================================================================== */
+
+.year-view-wrapper {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.02); 
+    border-radius: 24px;
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+    animation: slideUpIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.year-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.year-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 16px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.year-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.year-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Animasi mikro pada Icon Folder */
+.yr-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.year-card:hover .yr-icon {
+    transform: scale(1.15) rotate(-6deg);
+}
+
+.yr-text strong {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+}
+
+.yr-text span {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.12);
+    padding: 3px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   6. VIDEO OVERLAY LAYER EFFECT
+   ========================================================================== */
+
+.video-overlay-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% + 20px));
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+/* Trigger saat hover pada kartu tahun */
+.year-card:hover .video-overlay-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Pas di tengah-tengah */
+}
+
+.video-overlay-btn:hover {
+    background: var(--interactive-accent);
+    border-color: transparent;
+    transform: translate(-50%, -50%) scale(1.05) !important;
+}
+
+/* Improvisasi: Latar belakang icon/teks nge-blur elegan saat tombol video muncul */
+.year-card:hover .yr-icon, 
+.year-card:hover .yr-text {
+    filter: blur(3px);
+    opacity: 0.3;
+}
+
+/* ==========================================================================
+   7. NAVIGATION BUTTON & ANIMATIONS
+   ========================================================================== */
+
+.back-button {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(-4px);
+}
+
+/* Animasi Entry */
+@keyframes slideUpIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   8. RESPONSIVE BREAKPOINTS (MOBILE & SIDEBAR)
+   ========================================================================== */
+
+@media (max-width: 800px) {
+    .duo-archive-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 Kolom untuk tablet / layout split */
+    }
+}
+
+@media (max-width: 520px) {
+    .duo-archive-container {
+        grid-template-columns: 1fr; /* 1 Kolom mutlak untuk mobile / sidebar sempit */
+        gap: 16px;
+    }
+    .big-archive-card {
+        height: 220px;
+    }
+}

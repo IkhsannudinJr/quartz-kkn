@@ -1,0 +1,199 @@
+/* 1. Membuat background canvas transparan agar wallpaper terlihat */
+.view-content:has(.canvas-wrapper) {
+    background: transparent !important;
+}
+
+.canvas-wrapper {
+    background-color: rgba(0, 0, 0, 0.1) !important; /* Tekstur gelap tipis */
+}
+
+/* 2. Efek Glassmorphism pada semua jenis Node (Card, Media, Group) */
+.canvas-node-content, 
+/* Update pada bagian Node Content */
+.canvas-node-content, 
+.canvas-group-container {
+    /* Campuran warna putih transparan dan sedikit efek noise */
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.12), 
+        rgba(255, 255, 255, 0.05)
+    ) !important;
+    
+    /* Efek Blur & Kejernihan */
+    backdrop-filter: blur(25px) saturate(160%) contrast(110%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%) contrast(110%);
+    
+    /* Border Glossy (Garis tipis di tepi atas untuk pantulan cahaya) */
+    border-top: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    
+    border-radius: 24px !important;
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.3),
+        inset 0 0 10px rgba(255, 255, 255, 0.05); /* Glow halus di bagian dalam */
+    
+    overflow: hidden;
+    position: relative;
+}
+
+/* Tambahan: Efek Kilau (Gloss) Overlay */
+.canvas-node-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0) 50%
+    );
+    pointer-events: none;
+}
+
+/* 3. Menghilangkan border default yang kasar */
+.canvas-node {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* 4. Membuat Label Grup juga bergaya Glass */
+.canvas-group-label {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 2px 10px;
+    color: white !important;
+}
+
+/* 5. Efek Hover agar lebih interaktif */
+.canvas-node:hover .canvas-node-content {
+    border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.3s ease;
+}
+
+/* =========================================================
+   5. EFEK HOVER & KILAU DINAMIS (GLARE)
+   ========================================================= */
+
+/* Pastikan content memiliki posisi relatif untuk menampung kilau */
+.canvas-node-content, 
+.canvas-group-container {
+    position: relative;
+    overflow: hidden; /* Penting agar kilau tidak keluar card */
+    transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Membuat lapisan kilau (Glare) yang tersembunyi */
+.canvas-node-content::after,
+.canvas-group-container::after {
+    content: "";
+    position: absolute;
+    /* Membuat lingkaran gradien cahaya putih besar */
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 0.4) 0%,   /* Warna kilat tengah */
+        rgba(255, 255, 255, 0.1) 30%,  /* Pudar tipis */
+        rgba(255, 255, 255, 0) 70%     /* Hilang total */
+    );
+    border-radius: 50%; /* Bulat sempurna agar pudar merata */
+    opacity: 0; /* Sembunyi secara default */
+    transform: scale(0.5);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none; /* Kursor bisa klik tembus lapisan ini */
+    z-index: 1; /* Di atas konten teks, di bawah border */
+}
+
+/* --- LOGIKA HOVER --- */
+
+/* 1. Saat kursor mendekat/masuk ke dalam Card */
+.canvas-node:hover .canvas-node-content,
+.canvas-group-container:hover {
+    /* Sedikit mengangkat card agar terasa nyata */
+    transform: translateY(-5px) scale(1.01);
+    
+    /* Border menjadi jauh lebih terang */
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    border-top-color: rgba(255, 255, 255, 0.9) !important;
+    
+    /* Bayangan luar menjadi lebih tajam */
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* 2. Mengaktifkan Lapisan Kilau (Glare) saat Hover */
+.canvas-node:hover .canvas-node-content::after,
+.canvas-group-container:hover::after {
+    opacity: 1; /* Kilau muncul */
+    transform: scale(1); /* Membesar */
+}
+
+/* --- OPSIONAL: Efek Klik (Sedikit Melesap) --- */
+.canvas-node:active .canvas-node-content {
+    transform: translateY(-2px) scale(0.99);
+    transition: transform 0.1s ease;
+}
+
+/* 1. Menghilangkan Border Utama pada Node/Card */
+.canvas-node {
+    border: none !important;
+    box-shadow: none !important; /* Menghapus shadow default agar tidak double dengan glass */
+    background: transparent !important;
+}
+
+/* 2. Menghilangkan Garis Fokus (Garis biru saat card diklik/dipilih) */
+.canvas-node.is-focused .canvas-node-content {
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4) !important; /* Ganti dengan glow putih tipis */
+}
+
+/* 3. Menghilangkan Header/Label Judul File di atas Card (Opsional) */
+/* Gunakan ini jika ingin card benar-benar polos hanya berisi konten */
+.canvas-node-label {
+    display: none !important;
+}
+
+/* 4. Menghilangkan Garis Penghubung (Edge/Line) antar Card jika diinginkan */
+/* Hapus tanda komentar (/*) di bawah ini jika ingin garis antar card juga hilang */
+/* .canvas-edges path {
+    stroke: rgba(255, 255, 255, 0.1) !important; 
+    stroke-width: 1px !important;
+} 
+*/
+
+/* 5. Membersihkan Background Internal Markdown */
+.canvas-node-content {
+    padding: 0 !important; /* Menghilangkan jarak antara konten dan tepi kaca */
+    border: none !important;
+}
+
+/* Menghapus garis border pembungkus luar (yang terlihat di gambar) */
+.canvas-node {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Menghilangkan garis bantu di sekeliling konten internal */
+.canvas-node-content {
+    border: none !important;
+}
+
+/* Menghilangkan background gelap/abu-abu bawaan obsidian agar transparansi sempurna */
+.canvas-node-content-blocker {
+    display: none !important;
+}
+
+/* Menghilangkan garis biru saat card dipilih (agar tetap clean) */
+.canvas-node.is-focused {
+    outline: none !important;
+    box-shadow: none !important;
+}
