@@ -25,9 +25,9 @@ dg-publish: "true"
       </div>
     </div>
     
-    <!-- Stage Peta Visual Statis yang Elegan -->
+    <!-- Stage Peta Visual Statis -->
     <div style="position: relative; width: 100%; height: 320px; border-radius: 8px; background: #0b0f19; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; overflow: hidden;">
-      <div style="font-size: 32px; animation: pulse 2s infinite;">🛰️</div>
+      <div style="font-size: 32px;">🛰️</div>
       <div style="font-size: 12px; font-weight: 600; color: #e2e8f0;">Citra Wilayah Kabupaten Wonogiri & Waduk Gajah Mungkur</div>
       <div style="font-size: 10.5px; color: #94a3b8; text-align: center; max-width: 400px; padding: 0 10px;">
         Peta interaktif berbasis Leaflet aktif di dalam aplikasi Obsidian. Versi web statis ini menampilkan rekapitulasi data secara optimal.
@@ -35,7 +35,7 @@ dg-publish: "true"
     </div>
   </div>
 
-  <!-- TABEL REKAPITULASI DATA KKN (Gaya Flex-Grid) -->
+  <!-- TABEL REKAPITULASI DATA KKN -->
   <div class="flex-grid-table" style="display: flex; flex-direction: column; width: 100%; overflow-x: auto;">
     
     <!-- Header Tabel -->
@@ -50,8 +50,8 @@ dg-publish: "true"
       <div style="padding: 0 6px;">Lokasi / Desa</div>
     </div>
 
-    <!-- Baris Contoh 1 -->
-    <div style="display: grid; grid-template-columns: 85px 90px 95px 1fr 110px 150px 105px 2fr; align-items: center; border-bottom: 0.5px solid rgba(255,255,255,0.04); padding: 8px 0; font-size: 11.5px; transition: background 0.15s ease;">
+    <!-- Baris Data 1 -->
+    <div style="display: grid; grid-template-columns: 85px 90px 95px 1fr 110px 150px 105px 2fr; align-items: center; border-bottom: 0.5px solid rgba(255,255,255,0.04); padding: 8px 0; font-size: 11.5px;">
       <div style="padding: 0 6px; font-weight: 600; color: #f0f0f0;">KKN-01</div>
       <div style="padding: 0 6px; font-weight: 500; color: #a6adc8;">UNS</div>
       <div style="padding: 0 6px; display: flex; justify-content: center;"><span style="color: #e67e22; background: rgba(243, 156, 18, 0.08); padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">Proses</span></div>
@@ -62,8 +62,8 @@ dg-publish: "true"
       <div style="padding: 0 6px; color: #f0f0f0; font-size: 11px;">Desa Baturetno</div>
     </div>
 
-    <!-- Baris Contoh 2 -->
-    <div style="display: grid; grid-template-columns: 85px 90px 95px 1fr 110px 150px 105px 2fr; align-items: center; border-bottom: 0.5px solid rgba(255,255,255,0.04); padding: 8px 0; font-size: 11.5px; transition: background 0.15s ease;">
+    <!-- Baris Data 2 -->
+    <div style="display: grid; grid-template-columns: 85px 90px 95px 1fr 110px 150px 105px 2fr; align-items: center; border-bottom: 0.5px solid rgba(255,255,255,0.04); padding: 8px 0; font-size: 11.5px;">
       <div style="padding: 0 6px; font-weight: 600; color: #f0f0f0;">KKN-02</div>
       <div style="padding: 0 6px; font-weight: 500; color: #a6adc8;">UGM</div>
       <div style="padding: 0 6px; display: flex; justify-content: center;"><span style="color: #27ae60; background: rgba(46, 204, 113, 0.08); padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">Selesai</span></div>
